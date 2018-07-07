@@ -1,3 +1,4 @@
+import functools
 import os
 
 from typing import Type
@@ -9,6 +10,7 @@ from ethpm.utils.module_loading import import_string
 DEFAULT_URI_BACKEND = "ethpm.backends.ipfs.IPFSGatewayBackend"
 
 
+@functools.lru_cache(maxsize=None)
 def get_uri_backend(import_path: str = None) -> BaseURIBackend:
     """
     Return the `BaseURIBackend` class specified by import_path, default, or env variable.

@@ -2,7 +2,13 @@ import pytest
 from solc import compile_source
 
 from ethpm import ASSETS_DIR, Package
+from ethpm.backends import get_uri_backend
 from ethpm.exceptions import UriNotSupportedError
+
+
+@pytest.fixture(autouse=True)
+def reset_get_uri_backend_cache():
+    get_uri_backend.cache_clear()
 
 
 @pytest.fixture()
