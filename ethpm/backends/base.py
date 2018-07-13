@@ -3,10 +3,15 @@ from abc import ABC, abstractmethod
 
 class BaseURIBackend(ABC):
     """
-    Generic backend that all URI backends are subclassed from.
+    Abstract base URI backend.
 
-    All subclasses must implement:
-    can_handle_uri, fetch_uri_contents
+    To handle a URI, a backend must be able to:
+
+    * Say if it knows how to handle it
+    * Be able to fetch contents for it
+
+    URI backends can be stateful.  That is, they may set up any resources they
+    need to complete their function in their ``__init__`` method.
     """
 
     @abstractmethod
